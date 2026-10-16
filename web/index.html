@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I'76 Map Viewer</title>
+<style>
+  :root { --bg: #111; --panel: rgba(20, 18, 14, .88); --fg: #e8dcc0; --accent: #d9a441; --muted: #9a8d70; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); font: 13px/1.4 system-ui, sans-serif; overflow: hidden; }
+  canvas { display: block; }
+  #ui { position: absolute; top: 10px; left: 10px; width: 260px; background: var(--panel); border: 1px solid #4a3f2a; border-radius: 6px; padding: 10px 12px; }
+  #ui h1 { margin: 0 0 8px; font-size: 15px; color: var(--accent); letter-spacing: .04em; }
+  #ui select { width: 100%; background: #221e16; color: var(--fg); border: 1px solid #4a3f2a; padding: 4px; }
+  #ui label { display: block; margin: 3px 0; }
+  #ui .row { margin-top: 8px; }
+  #info, #status { color: var(--muted); font-size: 12px; margin-top: 8px; white-space: pre-line; }
+  #hover { position: absolute; pointer-events: none; background: var(--panel); padding: 3px 6px; border-radius: 4px; display: none; font-size: 12px; }
+  #help { position: absolute; bottom: 10px; left: 10px; color: var(--muted); font-size: 12px; background: var(--panel); padding: 4px 8px; border-radius: 4px; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="ui">
+  <h1>INTERSTATE '76 · MAP VIEWER</h1>
+  <select id="mission"></select>
+  <div class="row">
+    <label><input type="checkbox" id="tObjects" checked> Objects</label>
+    <label><input type="checkbox" id="tRoads" checked> Roads</label>
+    <label><input type="checkbox" id="tCars" checked> Vehicles</label>
+    <label><input type="checkbox" id="tFog" checked> Fog</label>
+    <label><input type="checkbox" id="tWire"> Terrain wireframe</label>
+  </div>
+  <div id="info"></div>
+  <div id="status">Loading archive…</div>
+</div>
+<div id="hover"></div>
+<div id="help">Drag: orbit · Right-drag: pan · Wheel: zoom · WASD/QE: fly · Shift: fast · F: focus spawn</div>
+<script type="module" src="/web/main.js"></script>
+</body>
+</html>
